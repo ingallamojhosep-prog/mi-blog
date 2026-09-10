@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Blog académico de Inga Llamo, Jhosep Stefan Dair · UNSM · FISI">
+  <meta name="theme-color" content="#006837">
+  <title>MI BLOGG | Jhosep Stefan Dair Inga Llamo</title>
+
+  <style>
+    :root {
+      --unsm-green-primary: #006837;
+      --unsm-green-dark: #004d28;
+      --unsm-gold: #f2a900;
+      --bg-light: #f4f7f5;
+      --bg-card: #ffffff;
+      --text-main: #1a231e;
+      --text-muted: #526358;
+      --border-color: #d1ded6;
+      --glass-bg: rgba(255, 255, 255, 0.95);
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .site-header {
+      background: var(--unsm-green-primary);
+      color: #ffffff;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .brand .blog-logo-text {
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--unsm-gold);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, var(--unsm-green-primary) 0%, var(--unsm-green-dark) 100%);
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 16px;
+      margin-top: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 104, 55, 0.25);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+
+    .hero-title h1 {
+      font-size: 2.2rem;
+      margin: 0.5rem 0 0.8rem 0;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .hero-title p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .academic-card {
+      background: var(--glass-bg);
+      color: var(--text-main);
+      padding: 1.8rem;
+      border-radius: 12px;
+      border-left: 6px solid var(--unsm-gold);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .academic-card h3 {
+      margin: 0 0 1rem 0;
+      color: var(--unsm-green-primary);
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      font-size: 0.95rem;
+    }
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      padding-bottom: 0.4rem;
+    }
+
+    .info-item span.label {
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .info-item span.value {
+      font-weight: 600;
+      color: var(--text-main);
+      text-align: right;
+    }
+
+    .badge {
+      background-color: rgba(0, 104, 55, 0.1);
+      color: var(--unsm-green-primary);
+      border: 1px solid var(--border-color);
+      font-weight: 600;
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .primary-action {
+      background-color: var(--unsm-green-primary);
+      color: #ffffff;
+      border: none;
+      padding: 0.65rem 1.3rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s ease;
+    }
+
+    .primary-action:hover {
+      background-color: var(--unsm-green-dark);
+    }
+
+    .post-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.8rem;
+      margin-top: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .post-card h3 {
+      margin-top: 0.5rem;
+      color: var(--unsm-green-primary);
+      font-size: 1.35rem;
+    }
+
+    .preview-box {
+      width: 100%;
+      height: 520px;
+      margin: 1.2rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f8f9fa;
+    }
+
+    .download-btn {
+      background-color: var(--unsm-green-primary);
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    .download-btn:hover {
+      background-color: var(--unsm-green-dark);
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    .comments-section {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid var(--border-color);
+      margin-top: 3.5rem;
+    }
+
+    .comment-item {
+      padding: 1rem;
+      background: var(--bg-light);
+      border-left: 4px solid var(--unsm-green-primary);
+      border-radius: 4px;
+      margin-bottom: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header class="site-header">
+    <div class="navbar">
+      <a class="brand" href="#inicio" style="text-decoration:none;">
+        <span class="blog-logo-text">MI BLOGG</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#publicaciones">Informes</a>
+        <a href="#comentarios">Comentarios</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- Inicio -->
+    <section class="hero-section" id="inicio">
+      <div class="hero-grid">
+        <div class="hero-title">
+          <span style="background: var(--unsm-gold); color: #000; padding: 0.25rem 0.8rem; border-radius: 20px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase;">Portal Académico</span>
+          <h1>Universidad Nacional de San Martín</h1>
+          <p>Facultad de Ingeniería de Sistemas e Informática</p>
+          <div>
+            <a href="#publicaciones" class="primary-action" style="background: #ffffff; color: var(--unsm-green-primary); font-weight: 700;">Explorar Informes</a>
+          </div>
+        </div>
+
+        <div class="academic-card">
+          <h3>Ficha Académica</h3>
+          <div class="info-list">
+            <div class="info-item">
+              <span class="label">Estudiante:</span>
+              <span class="value">Jhosep Stefan Dair Inga Llamo</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Curso:</span>
+              <span class="value">Teoría General de Sistemas</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Docente:</span>
+              <span class="value">Ing. Dr. Alberto Alva Arévalo</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Escuela:</span>
+              <span class="value">Ingeniería de Sistemas e Informática</span>
+            </div>
+            <div class="info-item">
+              <span class="label">Ciclo / Semestre:</span>
+              <span class="value">IV Ciclo · 2026 – II</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publicaciones -->
+    <section id="publicaciones" style="margin-top: 3.5rem;">
+      <div class="badge">Trabajos Académicos</div>
+      <h2>Informes y Publicaciones</h2>
+      
+      <div id="postsGrid">
+        <article class="post-card">
+          <span class="badge">Informe Académico</span>
+          <h3>Percepción sobre la Disponibilidad y Compatibilidad de Tomacorrientes en la FISI</h3>
+          <p><small style="color: var(--text-muted);"><strong>Curso:</strong> Teoría General de Sistemas | <strong>Docente:</strong> Ing. Dr. Alberto Alva Arévalo</small></p>
+          
+          <p>Puedes leer el documento mediante la previsualización interactiva o guardarlo directamente en tu equipo:</p>
+
+          <!-- Previsualizador de Google Drive -->
+          <div class="preview-box">
+            <iframe 
+              src="https://drive.google.com/file/d/1Ud7ZrS6_UrNzW59L9m6USszp7f_M5XFj/preview" 
+              width="100%" 
+              height="100%" 
+              style="border: none;" 
+              allow="autoplay">
+            </iframe>
+          </div>
+
+          <!-- Únicamente Botón de Descarga Directa -->
+          <div style="margin-top: 1rem;">
+            <a 
+              href="https://drive.google.com/uc?export=download&id=1Ud7ZrS6_UrNzW59L9m6USszp7f_M5XFj" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="download-btn">
+              📥 Descargar Informe (.docx)
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Sección de Comentarios -->
+    <section class="comments-section" id="comentarios">
+      <h3>Sección de Comentarios</h3>
+      <form id="publicCommentForm">
+        <div class="form-group">
+          <input type="text" id="commentAuthor" placeholder="Tu Nombre o Usuario" required>
+        </div>
+        <div class="form-group">
+          <textarea id="commentContent" rows="3" placeholder="Escribe un comentario..." required></textarea>
+        </div>
+        <button type="submit" class="primary-action">Publicar Comentario</button>
+      </form>
+
+      <div id="generalCommentsList" style="margin-top: 1.5rem;"></div>
+    </section>
+
+  </main>
+
+  <!-- Scripts Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCnOk6XeBctoZ7_5FeaVWRzikfDRUtenh4",
+      authDomain: "blogcp-7170b.firebaseapp.com",
+      databaseURL: "https://blogcp-7170b-default-rtdb.firebaseio.com",
+      projectId: "blogcp-7170b",
+      storageBucket: "blogcp-7170b.firebasestorage.app",
+      messagingSenderId: "757384232761",
+      appId: "1:757384232761:web:a9b2800e44a168a98e32e8"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const commentsRef = ref(db, 'comentarios');
+
+    // Cargar Comentarios
+    onValue(commentsRef, (snapshot) => {
+      const data = snapshot.val();
+      const container = document.getElementById('generalCommentsList');
+      container.innerHTML = '';
+      if (data) {
+        Object.keys(data).reverse().forEach(key => {
+          const c = data[key];
+          container.innerHTML += `
+            <div class="comment-item">
+              <strong>${c.autor}</strong>
+              <p>${c.contenido}</p>
+            </div>`;
+        });
+      } else {
+        container.innerHTML = '<p style="color:var(--text-muted)">No hay comentarios registrados.</p>';
+      }
+    });
+
+    // Guardar Comentarios
+    document.getElementById('publicCommentForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      push(commentsRef, {
+        autor: document.getElementById('commentAuthor').value,
+        contenido: document.getElementById('commentContent').value,
+        creado_en: Date.now()
+      });
+      document.getElementById('commentContent').value = '';
+    });
+  </script>
+</body>
+</html>
